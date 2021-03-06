@@ -1,0 +1,31 @@
+sudden-death-time: 60 # minutes
+countdown-time: 3 # seconds
+grace-period: 30 # seconds
+respawn-invincibility: 15 # seconds
+portal-invincibility: 5 # seconds
+warning-times: [60, 30, 15, 10, 5, 4, 3, 2, 1] # seconds
+prevent-bed-explosions: true
+prevent-respawn-anchor-explosions: true
+indestructable-spawners: true
+must-kill-dragon-to-win: true
+hide-spectator-advancements: true
+give-compass: true
+give-armor: true
+efficient-tools: true
+smelt-ores: true
+cook-food: true
+randomize-drops: false
+permanent-potions: false
+teams:
+  rouge: "RED"
+  bleu: "BLUE"
+  vert: "GREEN"
+  jaune: "YELLOW"
+  aqua: "AQUA"
+  blanc: "WHITE"
+  rose: "LIGHT_PURPLE"
+  gris: "GRAY"
+  orange: "GOLD"
+  tnt: "DARK_RED"
+  violet: "DARK_PURPLE"
+  noir: "BLACK"

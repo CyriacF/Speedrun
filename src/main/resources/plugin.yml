@@ -1,0 +1,40 @@
+name: SpeedrunShowdown
+version: 1.0.3
+author: KaiNakamura
+main: com.github.speedrunshowdown.SpeedrunShowdown
+api-version: 1.16
+load: STARTUP
+depend: [TimoCloud]
+commands:
+  start:
+    description: Start the game
+    permission: speedrunshowdown
+    usage: /start
+  stop:
+    description: Stop the game
+    permission: speedrunshowdown
+    usage: /stop
+  config:
+    description: Open config gui
+    permission: speedrunshowdown
+    usage: /config
+  suddendeath:
+    description: Set time until sudden death
+    permission: speedrunshowdown
+    usage: /suddendeath [minutes]
+  givecompass:
+    description: Give a tracking compass
+    permission: speedrunshowdown
+    usage: /givecompass [player]
+  givearmor:
+    description: Give armor
+    permission: speedrunshowdown
+    usage: /givearmor [player]
+  win:
+    description: Declare the winning team
+    permission: speedrunshowdown
+    usage: /win (team|player)
+permissions:
+  speedrunshowdown:
+    description: Allows speedrunshowdown commands
+    default: op
