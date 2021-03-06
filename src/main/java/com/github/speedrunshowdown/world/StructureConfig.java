@@ -31,7 +31,7 @@ public enum StructureConfig {
 	SHIPWRECK(StructureGenerator.SHIPWRECK, "shipwreck", 24, 4, 165745295),
 	OCEAN_RUIN(StructureGenerator.OCEAN_RUIN, "ocean-ruin", 20, 8, 14357621),
 	BASTION_REMNANT(StructureGenerator.BASTION_REMNANT, "bastion-remnant", 27, 4, 30084232),
-	FORTRESS(StructureGenerator.FORTRESS, "fortress", 23, 4, 30084232),
+	FORTRESS(StructureGenerator.FORTRESS, "fortress", 5, 4, 30084232),
 	NETHER_FOSSIL(StructureGenerator.NETHER_FOSSIL, "nether-fossil", 2, 1, 14357921);
 
 	private static FileConfiguration config = null;

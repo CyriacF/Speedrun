@@ -21,7 +21,7 @@ public class BlockDamageListener implements Listener {
             event.getBlock().getType() == Material.SPAWNER
         ) {
             event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "Cannot break spawners!");
+            event.getPlayer().sendMessage(ChatColor.RED + "Tu ne peux pas casser les spawners!");
         }
     }
 }

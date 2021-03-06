@@ -118,7 +118,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
                     if (timer == warningTime) {
                         getServer().broadcastMessage(
                             (timer <= 10 ? ChatColor.RED : ChatColor.YELLOW) + "" +
-                            timer + " seconds before sudden death!"
+                            timer + " secondes avant la mort subite!"
                         );
 
                         // Play sound to all players

@@ -113,7 +113,7 @@ public class ScoreboardManager {
                 }
                // scores.add(newLine += " ");
                 scores.add(" ");
-                scores.add(ChatColor.GOLD + "CrafTok.fr");
+                scores.add(ChatColor.GOLD + "Craftok.fr");
             }
         }
         

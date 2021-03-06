@@ -79,9 +79,6 @@ public class PlayerJoin implements Listener {
 
     public void autoStart(){
         int task = 0;
-        int max = Bukkit.getOnlinePlayers().size();
-        Player[] players = Bukkit.getServer().getOnlinePlayers().toArray(new Player[0]);
-        SpeedrunShowdown plugin = SpeedrunShowdown.getInstance();
         int countdownTime = 15;
         for (int i = 0; i <= countdownTime; i++) {
             final int seconds = i;
@@ -90,7 +87,7 @@ public class PlayerJoin implements Listener {
                 if (seconds == 0) {
                     plugin.start();
                 }
-                if (count < 3){
+                if (count < 2){
                     Bukkit.getScheduler().cancelTask(finalTask);
                 }
                 else {
