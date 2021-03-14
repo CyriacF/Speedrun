@@ -27,7 +27,9 @@ public class PlayerJoin implements Listener {
         if (!plugin.isRunning()){
             event.setJoinMessage("§7[§a+§7] " + ChatColor.GRAY + event.getPlayer().getName());
             player.setGameMode(GameMode.ADVENTURE);
-            if (count >= 2){
+            player.sendMessage("§aIl manque §c" + (4-count) +  " §ajoueur(s) pour démarrer la partie");
+            if (count >= 4){
+                if (!plugin.isStarting())
                 autoStart();
             }
         }else{
@@ -44,7 +46,8 @@ public class PlayerJoin implements Listener {
         }else{
         event.setQuitMessage(null);
         }
-        if (count < 3){
+        if (count < 5){
+            plugin.setIsStarting(false);
             for (Player players : Bukkit.getServer().getOnlinePlayers()) {
                 if (!plugin.isRunning()){
                 players.sendTitle("Démmarage annulé", "", 1, 60, 1);
@@ -79,7 +82,8 @@ public class PlayerJoin implements Listener {
 
     public void autoStart(){
         int task = 0;
-        int countdownTime = 15;
+        int countdownTime = 50;
+        plugin.setIsStarting(true);
         for (int i = 0; i <= countdownTime; i++) {
             final int seconds = i;
             int finalTask = task;
@@ -92,7 +96,7 @@ public class PlayerJoin implements Listener {
                 }
                 else {
                     for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                        if (seconds ==  15 || seconds == 10 || seconds == 5 || seconds == 4 || seconds == 3 || seconds == 2 || seconds == 1){
+                        if (seconds ==  45 || seconds ==  30 || seconds ==  15 || seconds == 10 || seconds == 5 || seconds == 4 || seconds == 3 || seconds == 2 || seconds == 1){
                             player.sendTitle("§6Démmarage dans :", "" + seconds, 1, 20, 1);
                             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 100, 1);
                         }
@@ -101,4 +105,5 @@ public class PlayerJoin implements Listener {
             }, 20L + (countdownTime - i) * 20L);
         }
     }
+
 }

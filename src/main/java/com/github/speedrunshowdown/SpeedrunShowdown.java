@@ -5,13 +5,12 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import cloud.timo.TimoCloud.api.TimoCloudAPI;
-import cloud.timo.TimoCloud.api.objects.ServerObject;
 import com.github.speedrunshowdown.commands.*;
 import com.github.speedrunshowdown.gui.*;
 import com.github.speedrunshowdown.listeners.*;
 import com.github.speedrunshowdown.world.StructureConfig;
 
+import net.minecraft.server.v1_16_R1.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -24,6 +23,7 @@ import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.advancement.AdvancementProgress;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
@@ -43,6 +43,7 @@ import org.bukkit.scoreboard.Team;
 public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private boolean running = false;
     private boolean suddenDeath = false;
+    private boolean starting = false;
     private int taskId;
     private int timer;
 
@@ -68,6 +69,8 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("givecompass").setExecutor(new GiveCompassCommand());
         getCommand("givearmor").setExecutor(new GiveArmorCommand());
         getCommand("win").setExecutor(new WinCommand());
+
+        MinecraftServer.getServer().setMotd("ONLINE");
 
         // Create listeners
         getServer().getPluginManager().registerEvents(new WorldInitListener(), this);
@@ -237,6 +240,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
 
         // Broadcast stopping game
         getServer().broadcastMessage(ChatColor.RED + "Stopping game");
+
 
         // Clear scoreboard
         scoreboardManager.clear();
@@ -457,8 +461,16 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         return running;
     }
 
+    public boolean isStarting() {
+        return starting;
+    }
+
     public boolean isSuddenDeath() {
         return suddenDeath;
+    }
+
+    public void setIsStarting(boolean state) {
+        starting = state;
     }
 
     public int getTimer() {
