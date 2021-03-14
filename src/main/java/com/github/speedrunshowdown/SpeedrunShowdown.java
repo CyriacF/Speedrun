@@ -155,6 +155,8 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         // Reset timer
         timer = getConfig().getInt("sudden-death-time") * 60;
 
+        MinecraftServer.getServer().setMotd("INGAME");
+
         // Schedule repeating task
         taskId = getServer().getScheduler().scheduleSyncRepeatingTask(this, this, 20, 20);
 
