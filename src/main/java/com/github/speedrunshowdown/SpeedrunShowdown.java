@@ -39,6 +39,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Team;
+import de.dytanic.cloudnet.ext.bridge.bukkit.BukkitCloudNetHelper;
 
 public class SpeedrunShowdown extends JavaPlugin implements Runnable {
     private boolean running = false;
@@ -71,6 +72,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         getCommand("win").setExecutor(new WinCommand());
 
         MinecraftServer.getServer().setMotd("ONLINE");
+        BukkitCloudNetHelper.setState("ONLINE");
 
         // Create listeners
         getServer().getPluginManager().registerEvents(new WorldInitListener(), this);
@@ -156,6 +158,7 @@ public class SpeedrunShowdown extends JavaPlugin implements Runnable {
         timer = getConfig().getInt("sudden-death-time") * 60;
 
         MinecraftServer.getServer().setMotd("INGAME");
+        BukkitCloudNetHelper.setState("INGAME");
 
         // Schedule repeating task
         taskId = getServer().getScheduler().scheduleSyncRepeatingTask(this, this, 20, 20);

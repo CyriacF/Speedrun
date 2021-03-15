@@ -4,6 +4,7 @@ author: KaiNakamura
 main: com.github.speedrunshowdown.SpeedrunShowdown
 api-version: 1.16
 load: STARTUP
+softdepend: [CloudNet-Bridge]
 commands:
   start:
     description: Start the game
