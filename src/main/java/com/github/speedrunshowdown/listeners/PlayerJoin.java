@@ -12,6 +12,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.scoreboard.Team;
 
 
 public class PlayerJoin implements Listener {
@@ -23,6 +24,7 @@ public class PlayerJoin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        Team team = plugin.getSpeedrunShowdownScoreboard().getScoreboard().getTeam(event.getPlayer().getName());
         count++;
         if (!plugin.isRunning()){
             event.setJoinMessage("§7[§a+§7] " + ChatColor.GRAY + event.getPlayer().getName());
@@ -32,8 +34,14 @@ public class PlayerJoin implements Listener {
                 if (!plugin.isStarting())
                 autoStart();
             }
-        }else{
-            event.setJoinMessage(null);
+        }else {
+            if (player.hasPermission("craftok.mod")) {
+                event.setJoinMessage(null);
+            }if(scoreboardManager.getTeam(player) != null){
+                event.setJoinMessage(ChatColor.RED + event.getPlayer().getName() + "§7 vient de se reconnecter");
+            }else{
+                event.getPlayer().kickPlayer("§cLa partie a déjà commencé !");
+            }
         }
     }
 
