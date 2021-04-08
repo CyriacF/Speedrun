@@ -87,7 +87,6 @@ public class PlayerJoin implements Listener {
         event.setFormat(p.getDisplayName() + ChatColor.GRAY + ": " + ChatColor.WHITE + event.getMessage());
     }
 
-
     public void autoStart(){
         int task = 0;
         int countdownTime = 50;
